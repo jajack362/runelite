@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018, Tomas Slusny <slusnucky@gmail.com>
+ * Copyright (c) 2018, Adam <Adam@sigterm.info>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,12 +24,14 @@
  */
 package net.runelite.client.events;
 
+import java.util.Collection;
 import lombok.Value;
-import net.runelite.client.ui.NavigationButton;
+import net.runelite.api.Player;
+import net.runelite.client.game.ItemStack;
 
 @Value
-public class PluginToolbarButtonRemoved
+public class PlayerLootReceived
 {
-	private NavigationButton button;
-	private int index;
+	private final Player player;
+	private final Collection<ItemStack> items;
 }

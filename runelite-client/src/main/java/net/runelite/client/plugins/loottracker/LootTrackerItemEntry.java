@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017, Tyler <https://github.com/tylerthardy>
+ * Copyright (c) 2018, Tomas Slusny <slusnucky@gmail.com>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,24 +22,15 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.cache.ui;
+package net.runelite.client.plugins.loottracker;
 
-import net.runelite.client.ui.FontManager;
-import static org.junit.Assert.assertNotNull;
-import org.junit.Test;
+import lombok.Value;
 
-public class FontManagerTest
+@Value
+class LootTrackerItemEntry
 {
-	@Test
-	public void getRunescapeFont()
-	{
-		assertNotNull(FontManager.getRunescapeFont());
-	}
-
-	@Test
-	public void getRunescapeSmallFont()
-	{
-		assertNotNull(FontManager.getRunescapeSmallFont());
-	}
-
+	private final int id;
+	private final String name;
+	private final int quantity;
+	private final long price;
 }
