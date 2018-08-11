@@ -34,7 +34,10 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+<<<<<<< HEAD
 import javax.imageio.ImageIO;
+=======
+>>>>>>> master
 import javax.inject.Inject;
 import javax.swing.SwingUtilities;
 import lombok.extern.slf4j.Slf4j;
@@ -59,6 +62,7 @@ import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.ui.ClientToolbar;
 import net.runelite.client.ui.NavigationButton;
+import net.runelite.client.util.ImageUtil;
 import net.runelite.client.util.Text;
 import net.runelite.http.api.item.ItemPrice;
 
@@ -125,11 +129,7 @@ public class LootTrackerPlugin extends Plugin
 		panel = new LootTrackerPanel(itemManager);
 		spriteManager.getSpriteAsync(SpriteID.UNUSED_TAB_INVENTORY, 0, panel::loadHeaderIcon);
 
-		final BufferedImage icon;
-		synchronized (ImageIO.class)
-		{
-			icon = ImageIO.read(LootTrackerPanel.class.getResourceAsStream("panel_icon.png"));
-		}
+		final BufferedImage icon = ImageUtil.getResourceStreamFromClass(getClass(), "panel_icon.png");
 
 		navButton = NavigationButton.builder()
 			.tooltip("Loot Tracker")
@@ -257,6 +257,7 @@ public class LootTrackerPlugin extends Plugin
 		{
 			final ItemComposition itemComposition = itemManager.getItemComposition(itemStack.getId());
 			final int realItemId = itemComposition.getNote() != -1 ? itemComposition.getLinkedNoteId() : itemStack.getId();
+<<<<<<< HEAD
 			final ItemPrice itemPrice = itemManager.getItemPrice(realItemId);
 			final long price;
 			if (itemPrice != null)
@@ -271,6 +272,9 @@ public class LootTrackerPlugin extends Plugin
 			{
 				price = 0;
 			}
+=======
+			final long price = (long)itemManager.getItemPrice(realItemId) * (long)itemStack.getQuantity();
+>>>>>>> master
 
 			return new LootTrackerItemEntry(
 				itemStack.getId(),

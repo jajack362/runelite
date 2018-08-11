@@ -28,7 +28,11 @@
 
 	<groupId>net.runelite</groupId>
 	<artifactId>runelite-parent</artifactId>
+<<<<<<< HEAD
 	<version>1.4.10.3-SNAPSHOT</version>
+=======
+	<version>1.4.12-SNAPSHOT</version>
+>>>>>>> master
 	<packaging>pom</packaging>
 
 	<name>RuneLite</name>
