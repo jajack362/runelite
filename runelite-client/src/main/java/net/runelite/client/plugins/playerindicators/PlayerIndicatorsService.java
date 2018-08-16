@@ -24,12 +24,14 @@
  */
 package net.runelite.client.plugins.playerindicators;
 
-import java.awt.Color;
+import java.awt.*;
+import java.io.Console;
 import java.util.function.BiConsumer;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import net.runelite.api.Client;
 import net.runelite.api.Player;
+import net.runelite.client.ui.overlay.OverlayUtil;
 
 @Singleton
 public class PlayerIndicatorsService
@@ -90,6 +92,34 @@ public class PlayerIndicatorsService
 			{
 				consumer.accept(player, config.getNonClanMemberColor());
 			}
+
+			if (!config.highlightCallerList().equals(""))
+			{
+                for (String playerName : PlayerIndicatorsPlugin.callerStringList)
+                {
+                    if (playerName.equals(player.getName()))
+                    {
+                        if (config.callersOnScreen())
+                        {
+                            consumer.accept(player, config.callerColor());
+                        }
+                    }
+                }
+			}
+
+            if (!config.highlightSnipeList().equals(""))
+            {
+                for (String playerName : PlayerIndicatorsPlugin.sniperStringList)
+                {
+                    if (playerName.equals(player.getName()))
+                    {
+                        if (config.snipeOnScreen())
+                        {
+                            consumer.accept(player, config.snipeColor());
+                        }
+                    }
+                }
+            }
 		}
 	}
 }

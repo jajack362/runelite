@@ -205,4 +205,99 @@ public interface PlayerIndicatorsConfig extends Config
 	{
 		return true;
 	}
+
+	@ConfigItem(
+			position = 16,
+			keyName = "callerList",
+			name = "Paste RSN(s) of callers",
+			description = "Import RSNs of callers to have them tracked on your friend finder"
+	)
+	default String highlightCallerList()
+	{
+		return "";
+	}
+
+	@ConfigItem(
+			keyName = "callerList",
+			name = "",
+			description = ""
+	)
+	void highlightCallerList(String key);
+
+	@ConfigItem(
+			position = 17,
+			keyName = "showCallerListScreen",
+			name = "Display callers on the viewpoint",
+			description = "Toggle whether or not callers should appear on the viewpoint"
+	)
+	default boolean callersOnScreen()
+	{
+		return true;
+	}
+
+	@ConfigItem(
+			position = 18,
+			keyName = "showCallerListMap",
+			name = "Display callers on the minimap",
+			description = "Toggle whether or not callers should appear on the minimap"
+	)
+	default boolean callersOnMap()
+	{
+		return true;
+	}
+
+	@ConfigItem(
+			position = 19,
+			keyName = "callerColor",
+			name = "Caller color",
+			description = "Color of callers"
+	)
+	default Color callerColor()
+	{
+		return new Color(19, 110, 247);
+	}
+
+	@ConfigItem(
+			position = 20,
+			keyName = "snipeList",
+			name = "Paste RSN(s) of people to snipe",
+			description = "Import RSNs of people to snipe to have them tracked on your friend finder"
+	)
+	default String highlightSnipeList()
+	{
+		return "";
+	}
+
+	@ConfigItem(
+			position = 21,
+			keyName = "showSnipeListScreen",
+			name = "Display callers on the viewpoint",
+			description = "Toggle whether or not people on the snipe list should appear on the viewpoint"
+	)
+	default boolean snipeOnScreen()
+	{
+		return true;
+	}
+
+	@ConfigItem(
+			position = 22,
+			keyName = "showSnipeListMap",
+			name = "Display callers on the minimap",
+			description = "Toggle whether or not people on the snipe list should appear on the minimap"
+	)
+	default boolean snipeOnMap()
+	{
+		return true;
+	}
+
+	@ConfigItem(
+			position = 23,
+			keyName = "snipeColor",
+			name = "Snipe list color",
+			description = "Color of people to snipe"
+	)
+	default Color snipeColor()
+	{
+		return new Color(0, 184, 212);
+	}
 }

@@ -34,10 +34,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
-<<<<<<< HEAD
 import javax.imageio.ImageIO;
-=======
->>>>>>> master
 import javax.inject.Inject;
 import javax.swing.SwingUtilities;
 import lombok.extern.slf4j.Slf4j;
@@ -257,7 +254,6 @@ public class LootTrackerPlugin extends Plugin
 		{
 			final ItemComposition itemComposition = itemManager.getItemComposition(itemStack.getId());
 			final int realItemId = itemComposition.getNote() != -1 ? itemComposition.getLinkedNoteId() : itemStack.getId();
-<<<<<<< HEAD
 			final ItemPrice itemPrice = itemManager.getItemPrice(realItemId);
 			final long price;
 			if (itemPrice != null)
@@ -272,9 +268,7 @@ public class LootTrackerPlugin extends Plugin
 			{
 				price = 0;
 			}
-=======
 			final long price = (long)itemManager.getItemPrice(realItemId) * (long)itemStack.getQuantity();
->>>>>>> master
 
 			return new LootTrackerItemEntry(
 				itemStack.getId(),

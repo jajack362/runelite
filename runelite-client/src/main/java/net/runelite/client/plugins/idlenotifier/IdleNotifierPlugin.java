@@ -300,7 +300,14 @@ public class IdleNotifierPlugin extends Plugin
 			{
 				if (!notifyPrayer)
 				{
-					notifyPrayer = true;
+					if (config.repeatPrayer())
+					{
+						notifyPrayer = false;
+					}
+					else if (!config.repeatPrayer())
+					{
+						notifyPrayer = true;
+					}
 					return true;
 				}
 			}

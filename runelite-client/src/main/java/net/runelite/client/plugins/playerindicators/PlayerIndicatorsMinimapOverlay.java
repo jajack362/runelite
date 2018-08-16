@@ -72,5 +72,23 @@ public class PlayerIndicatorsMinimapOverlay extends Overlay
 				OverlayUtil.renderTextLocation(graphics, minimapLocation, name, color);
 			}
 		}
+		if (config.callersOnMap())
+		{
+			final net.runelite.api.Point minimapLocation = actor.getMinimapLocation();
+
+			if (minimapLocation != null)
+			{
+				OverlayUtil.renderTextLocation(graphics, minimapLocation, name, color);
+			}
+		}
+		if (config.snipeOnMap())
+		{
+			final net.runelite.api.Point minimapLocation = actor.getMinimapLocation();
+
+			if (minimapLocation != null)
+			{
+				OverlayUtil.renderTextLocation(graphics, minimapLocation, name, color);
+			}
+		}
 	}
 }

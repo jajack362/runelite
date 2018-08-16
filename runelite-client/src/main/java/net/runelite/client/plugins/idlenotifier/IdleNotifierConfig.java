@@ -85,4 +85,15 @@ public interface IdleNotifierConfig extends Config
 	{
 		return 0;
 	}
+
+	@ConfigItem(
+			position = 6,
+			keyName = "repeatPrayerSounds",
+			name = "Loop prayer notification",
+			description = "Loops the prayer notification until prayer level is over threshold."
+	)
+	default boolean repeatPrayer()
+	{
+		return false;
+	}
 }

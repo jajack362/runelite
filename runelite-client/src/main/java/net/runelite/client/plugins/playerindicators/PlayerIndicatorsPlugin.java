@@ -24,9 +24,12 @@
  */
 package net.runelite.client.plugins.playerindicators;
 
+import com.google.common.base.Splitter;
 import com.google.common.eventbus.Subscribe;
 import com.google.inject.Provides;
 import java.awt.Color;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 import javax.inject.Inject;
 import net.runelite.api.ClanMemberRank;
 import static net.runelite.api.ClanMemberRank.UNRANKED;
@@ -34,6 +37,7 @@ import net.runelite.api.Client;
 import static net.runelite.api.MenuAction.*;
 import net.runelite.api.MenuEntry;
 import net.runelite.api.Player;
+import net.runelite.api.events.ConfigChanged;
 import net.runelite.api.events.MenuEntryAdded;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.game.ClanManager;
@@ -50,6 +54,12 @@ import net.runelite.client.util.Text;
 )
 public class PlayerIndicatorsPlugin extends Plugin
 {
+	private static final Splitter COMMA_SPLITTER = Splitter.on(",")
+			.omitEmptyStrings()
+			.trimResults();
+	public static List<String> callerStringList = new CopyOnWriteArrayList<>();
+	public static List<String> sniperStringList = new CopyOnWriteArrayList<>();
+
 	@Inject
 	private OverlayManager overlayManager;
 
@@ -91,6 +101,16 @@ public class PlayerIndicatorsPlugin extends Plugin
 		overlayManager.remove(playerIndicatorsOverlay);
 		overlayManager.remove(playerIndicatorsTileOverlay);
 		overlayManager.remove(playerIndicatorsMinimapOverlay);
+	}
+
+	@Subscribe
+	public void onConfigChanged(ConfigChanged event) {
+		if (event.getGroup().equals("playerindicators")) {
+			callerStringList = COMMA_SPLITTER.splitToList(config.highlightCallerList());
+		}
+		if (event.getGroup().equals("playerindicators")) {
+			sniperStringList = COMMA_SPLITTER.splitToList(config.highlightSnipeList());
+		}
 	}
 
 	@Subscribe
